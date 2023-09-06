@@ -92,7 +92,7 @@ GUi:getTextInputValue(name)
 # Support for resolution Handlers (e.g. push, lovesize)
 Got a resolution handler you want to make this work with?
 
-Simply just add this line to your resolution handler:
+Simply just add this line to your resolution handler to the applicable name.
 ```lua
 GUi._RESOLUTION_HANDLER = "push" or "lovesize"
 ```
