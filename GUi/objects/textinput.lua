@@ -7,7 +7,7 @@ local _textinput = {
 
 function _textinput.new(placeholderTxt, x, y, width, height, colours, options, callback)
     local self = setmetatable({}, {__index = _textinput})
-    self.tag = options.tag or "default"
+    self.tag = options and options.tag or "default"
     self.placeholderTxt = placeholderTxt or "Text Input"
     self.x = x or 0
     self.y = y or 0

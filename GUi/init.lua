@@ -12,6 +12,7 @@ local GUi = {
     _SLIDERS_VALUES = {},
     _TEXT_INPUTS_VALUES = {},
     _ON_OFF_VALUES = {},
+    _DROPDOWNS_VALUES = {},
 
     _RESOLUTION_HANDLER = "none", -- Supports: push, lovesize
     _RESOLUTION_HANDLER_FUNCS = {
@@ -33,6 +34,7 @@ local function init()
     GUi._OBJECTS._onOff = require(path .. "objects.on_off_button")
     GUi._OBJECTS._slider = require(path .. "objects.slider")
     GUi._OBJECTS._textInput = require(path .. "objects.textinput")
+    GUi._OBJECTS._dropdown = require(path .. "objects.dropdown")
 
     -- Set functions -- Sp you can call GUi.Button() instead of GUi._button.new()
     for k, v in pairs(GUi._OBJECTS) do
@@ -107,6 +109,10 @@ end
 
 function GUi:getOnOffState(tag)
     return self._ON_OFF_VALUES[tag]
+end
+
+function GUi:getDropdownValue(tag)
+    return self._DROPDOWNS_VALUES[tag]
 end
 
 init()
