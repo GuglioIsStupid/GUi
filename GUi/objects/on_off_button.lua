@@ -25,6 +25,9 @@ function _on_off.new(text, x, y, width, height, colours, options, callback)
     
     -- add to _PARENT._MEMBERS
     self._PARENT._MEMBERS[#self._PARENT._MEMBERS + 1] = self
+
+    -- add to self._PARENT._ON_OFF_VALUES with tag
+    self._PARENT._ON_OFF_VALUES[self.text] = self.state
 end
 
 function _on_off:draw()
@@ -55,6 +58,7 @@ function _on_off:mousepressed(x, y, button)
     if button == 1 then
         if x >= self.x and x <= self.x + self.width and y >= self.y and y <= self.y + self.height then
             self.state = not self.state
+            self._PARENT._ON_OFF_VALUES[self.text] = self.state
             self.callback(self.state)
         end
     end

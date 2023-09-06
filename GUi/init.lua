@@ -10,14 +10,24 @@ local GUi = {
     _MEMBERS = {},
     _OBJECTS = {},
     _SLIDERS_VALUES = {},
+    _TEXT_INPUTS_VALUES = {},
+    _ON_OFF_VALUES = {},
 
-    _JSON = require(path .. "modules.json")
+    _JSON = require(path .. "modules.json"),
+
+    _TRY_EXCEPT = function(t, e)
+        local status, err = pcall(t)
+        if not status then
+            e(err)
+        end
+    end
 }
 
 local function init()
     GUi._OBJECTS._button = require(path .. "objects.button")
-    GUi._OBJECTS._on_off = require(path .. "objects.on_off_button")
+    GUi._OBJECTS._onOff = require(path .. "objects.on_off_button")
     GUi._OBJECTS._slider = require(path .. "objects.slider")
+    GUi._OBJECTS._textInput = require(path .. "objects.textinput")
 
     -- Set functions -- Sp you can call GUi.Button() instead of GUi._button.new()
     for k, v in pairs(GUi._OBJECTS) do
@@ -35,6 +45,7 @@ end
 function GUi:draw()
     for i = 1, #self._MEMBERS do
         self._MEMBERS[i]:draw()
+        love.graphics.setColor(1, 1, 1)
     end
 end
 
@@ -56,6 +67,18 @@ function GUi:mousereleased(x, y, button)
     end
 end
 
+function GUi:textinput(text)
+    for i = 1, #self._MEMBERS do
+        if self._MEMBERS[i].textinput then self._MEMBERS[i]:textinput(text) end
+    end
+end
+
+function GUi:keypressed(key)
+    for i = 1, #self._MEMBERS do
+        if self._MEMBERS[i].keypressed then self._MEMBERS[i]:keypressed(key) end
+    end
+end
+
 function GUi:update(dt)
     for i = 1, #self._MEMBERS do
         if self._MEMBERS[i].update then self._MEMBERS[i]:update(dt) end
@@ -64,6 +87,18 @@ end
 
 function GUi:getSliderValue(tag)
     return self._SLIDERS_VALUES[tag]
+end
+
+function GUi:getTextInputValue(tag)
+    --if its empty, return a space
+    if self._TEXT_INPUTS_VALUES[tag] == "" or self._TEXT_INPUTS_VALUES[tag] == nil then
+        return "Empty"
+    end
+    return self._TEXT_INPUTS_VALUES[tag]
+end
+
+function GUi:getOnOffState(tag)
+    return self._ON_OFF_VALUES[tag]
 end
 
 init()
