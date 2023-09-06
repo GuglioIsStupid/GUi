@@ -13,7 +13,12 @@ local GUi = {
     _TEXT_INPUTS_VALUES = {},
     _ON_OFF_VALUES = {},
 
-    _JSON = require(path .. "modules.json"),
+    _RESOLUTION_HANDLER = "none", -- Supports: push, lovesize
+    _RESOLUTION_HANDLER_FUNCS = {
+        ["push"] = function(x, y) return push.toGame(x, y) end,
+        ["lovesize"] = function(x, y) return lovesize.pos(x, y) end,
+        ["none"] = function(x, y) return x, y end
+    },
 
     _TRY_EXCEPT = function(t, e)
         local status, err = pcall(t)
@@ -50,18 +55,21 @@ function GUi:draw()
 end
 
 function GUi:mousepressed(x, y, button)
+    local x, y = self._RESOLUTION_HANDLER_FUNCS[self._RESOLUTION_HANDLER](x, y)
     for i = 1, #self._MEMBERS do
         if self._MEMBERS[i].mousepressed then self._MEMBERS[i]:mousepressed(x, y, button) end
     end
 end
 
 function GUi:mousemoved(x, y, dx, dy)
+    local x, y = self._RESOLUTION_HANDLER_FUNCS[self._RESOLUTION_HANDLER](x, y)
     for i = 1, #self._MEMBERS do
         if self._MEMBERS[i].mousemoved then self._MEMBERS[i]:mousemoved(x, y, dx, dy) end
     end
 end
 
 function GUi:mousereleased(x, y, button)
+    local x, y = self._RESOLUTION_HANDLER_FUNCS[self._RESOLUTION_HANDLER](x, y)
     for i = 1, #self._MEMBERS do
         if self._MEMBERS[i].mousereleased then self._MEMBERS[i]:mousereleased(x, y, button) end
     end
@@ -102,7 +110,5 @@ function GUi:getOnOffState(tag)
 end
 
 init()
-
---print(GUi._JSON.encode({["balls"] = true, {1,2,3,4, ["hihi"]=false}})) -- was bored loolll
 
 return GUi

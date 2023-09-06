@@ -23,7 +23,7 @@ function _slider.new(tag, x, y, width, height, colours, options, callback)
     self.roundAmount = options and options.roundAmount or 0
     self.knobRoundAmount = options and options.knobRoundAmount or 0
 
-    self.callback = callback
+    self.callback = callback or function() end
     self.hover = false
     self.dragging = false
     self.value = 0

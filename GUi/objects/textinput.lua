@@ -18,7 +18,7 @@ function _textinput.new(placeholderTxt, x, y, width, height, colours, options, c
     self.placeholderColour = colours and colours.placeholderColour or {0.5, 0.5, 0.5}
     self.hoverColour = colours and colours.hoverColour or {0.6, 0.6, 0.6}
     self.roundAmount = options and options.roundAmount or 0
-    self.callback = callback
+    self.callback = callback or function() end
     self.hover = false
     self.input = false
     self.maxChars = options and options.maxChars or 10
@@ -31,7 +31,6 @@ function _textinput.new(placeholderTxt, x, y, width, height, colours, options, c
 
     -- add to self._PARENT._TEXT_INPUTS_VALUES with tag
     self._PARENT._TEXT_INPUTS_VALUES[self.tag] = self.text
-    print(self._PARENT._TEXT_INPUTS_VALUES[self.tag])
 end
 
 function _textinput:update()

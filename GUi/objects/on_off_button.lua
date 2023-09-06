@@ -20,7 +20,7 @@ function _on_off.new(text, x, y, width, height, colours, options, callback)
 
     self.roundAmount = options and options.roundAmount or 0
 
-    self.callback = callback
+    self.callback = callback or function() end
     self.state = false
     self.hover = false
     
