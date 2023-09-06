@@ -83,10 +83,10 @@ end
 
 # Get a widgets value (if applicable)
 ```lua
-GUi:getOnOffState(name)
-GUi:getSliderValue(name)
-GUi:getDropdownValue(name)
-GUi:getTextInputValue(name)
+GUi:getOnOffState(name) -- Returns a boolean
+GUi:getSliderValue(name) -- Returns a number
+GUi:getDropdownValue(name) -- Returns a table {index = 1, string = "value"}
+GUi:getTextInputValue(name) -- Returns a string
 ```
 
 # Support for resolution Handlers (e.g. push, lovesize)
