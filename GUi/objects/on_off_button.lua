@@ -1,6 +1,7 @@
 local _on_off = {
     _NAME = "On/Off Button",
     _DESCRIPTION = "An on/off button object for GUi",
+    _USAGE = "GUi.OnOff(text, x, y, width, height, {colours}, {options}, callback)\nColours: {offColour, onColour, offTextColour, onTextColour}\nOptions: {roundAmount}",
     _PARENT = nil,
 }
 

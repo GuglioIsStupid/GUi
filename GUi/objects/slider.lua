@@ -1,6 +1,7 @@
 local _slider = {
     _NAME = "Slider",
     _DESCRIPTION = "A slider object for GUi",
+    _USAGE = "GUi.Slider(tag, x, y, width, height, {colours}, {options}, callback)\nColours: {colour, valueColour, knobOffColour, knobDownColour, knobHighlightColour}\nOptions: {roundAmount, knobRoundAmount, min, max}",
     _PARENT = nil,
 }
 

@@ -1,6 +1,7 @@
 local _textinput = {
     _NAME = "TextInput",
     _DESCRIPTION = "A text input object for GUi",
+    _USAGE = "GUi.TextInput(placeholderTxt, x, y, width, height, {colours}, {options}, callback)\nColours: {colour, textColour, placeholderColour, hoverColour}\nOptions: {roundAmount, maxChars}",
     _PARENT = nil,
 }
 

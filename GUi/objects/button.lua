@@ -1,6 +1,7 @@
 local _button = {
     _NAME = "Button",
     _DESCRIPTION = "A button object for GUi",
+    _USAGE = "GUi.Button(text, x, y, width, height, {colours}, {options}, callback)\nColours: {offColour, onColour, offTextColour, onTextColour}\nOptions: {roundAmount}",
     _PARENT = nil,
 }
 
