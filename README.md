@@ -44,9 +44,28 @@ function love.mousepressed(x, y, button)
     GUi:mousepressed(x, y, button)
 end
 
+function love.mousemoved(x, y, dx, dy)
+    GUi:mousemoved(x, y, dx, dy)
+end
+
 function love.mousereleased(x, y, button)
     GUi:mousereleased(x, y, button)
 end
+
+-- For mobile devices --
+function love.touchpressed(id, x, y, dx, dy, pressure)
+    GUi:touchpressed(id, x, y, dx, dy, pressure)
+end
+
+function love.touchmoved(id, x, y, dx, dy, pressure)
+    GUi:touchmoved(id, x, y, dx, dy, pressure)
+end
+
+function love.touchreleased(id, x, y, dx, dy, pressure)
+    GUi:touchreleased(id, x, y, dx, dy, pressure)
+end
+
+-- End mobile device functions --
 
 function love.textinput(text)
     GUi:textinput(text)

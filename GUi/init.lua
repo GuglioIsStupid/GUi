@@ -77,6 +77,28 @@ function GUi:mousereleased(x, y, button)
     end
 end
 
+-- Touch devices 
+function GUi:touchpressed(id, x, y, dx, dy, pressure)
+    local x, y = self._RESOLUTION_HANDLER_FUNCS[self._RESOLUTION_HANDLER](x, y)
+    for i = 1, #self._MEMBERS do
+        if self._MEMBERS[i].touchpressed then self._MEMBERS[i]:touchpressed(id, x, y, dx, dy, pressure) end
+    end
+end
+
+function GUi:touchmoved(id, x, y, dx, dy, pressure)
+    local x, y = self._RESOLUTION_HANDLER_FUNCS[self._RESOLUTION_HANDLER](x, y)
+    for i = 1, #self._MEMBERS do
+        if self._MEMBERS[i].touchmoved then self._MEMBERS[i]:touchmoved(id, x, y, dx, dy, pressure) end
+    end
+end
+
+function GUi:touchreleased(id, x, y, dx, dy, pressure)
+    local x, y = self._RESOLUTION_HANDLER_FUNCS[self._RESOLUTION_HANDLER](x, y)
+    for i = 1, #self._MEMBERS do
+        if self._MEMBERS[i].touchreleased then self._MEMBERS[i]:touchreleased(id, x, y, dx, dy, pressure) end
+    end
+end
+
 function GUi:textinput(text)
     for i = 1, #self._MEMBERS do
         if self._MEMBERS[i].textinput then self._MEMBERS[i]:textinput(text) end
