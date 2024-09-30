@@ -1,4 +1,4 @@
-# GUi (Guh I) ((Bad name, I know))
+# GUi idfk
 
 ## What is GUi?
 GUi is a GUI library for LOVE2D, It is designed to be easy to use, easy to understand, and easy to implement.
